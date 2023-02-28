@@ -23,6 +23,10 @@ public class UserService {
 	public UserVo getUser(UserVo vo) {
 		return userRepository.findByEmailAndPassword(vo.getEmail(), vo.getPassword());
 	}
+	
+	public UserVo getUser(String email) {
+		return userRepository.findByEmail(email);
+	}
 
 	public UserVo getUser(Long no) {
 		return userRepository.findByNo(no);

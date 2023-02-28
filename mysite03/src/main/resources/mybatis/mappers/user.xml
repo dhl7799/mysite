@@ -25,6 +25,13 @@
 		]]>	   
 	</select>
 	
+	<select id="findByEmail" resultType="uservo" parameterType="string">
+		<![CDATA[
+		select no, name, email, gender
+		  from user where email=#{email }
+		]]>	   
+	</select>
+	
 	<select id="findNameByNo" resultType="string" parameterType="long">
 		<![CDATA[
 		select name from user where no=#{no }
