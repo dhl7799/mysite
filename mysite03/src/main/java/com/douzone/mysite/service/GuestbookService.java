@@ -23,7 +23,11 @@ public class GuestbookService {
 		return guestbookRepository.findAll();
 	}
 	
-	public void delete(Long no, String password) {
-		guestbookRepository.deleteByNoAndPassword(no, password);
+	public List<GuestbookVo> list(long no) {
+		return guestbookRepository.findAll(no);
+	}
+	
+	public Boolean delete(Long no, String password) {
+		return 1 == guestbookRepository.deleteByNoAndPassword(no, password);
 	}
 }

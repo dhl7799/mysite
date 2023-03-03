@@ -25,12 +25,12 @@ public class GuestbookRepository {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public void deleteByNoAndPassword(Long no, String password) {
+	public int deleteByNoAndPassword(Long no, String password) {
 		/*Map<String, Object> map = new HashMap<>();
 		map.put("no", no);
 		map.put("password", password);*/
 		Map<String, Object> map = Map.of("no", no, "password", password);
-		sqlSession.delete("guestbook.deleteByNoAndPassword", map);
+		return sqlSession.delete("guestbook.deleteByNoAndPassword", map);
 	}
 	
 	public void insert(GuestbookVo vo) {
@@ -42,6 +42,10 @@ public class GuestbookRepository {
 		List<GuestbookVo> list = sqlSession.selectList("guestbook.findAll");
 		
 		return list;
+	}
+
+	public List<GuestbookVo> findAll(long no) {
+		return sqlSession.selectList("guestbook.findAllByNo", no);
 	}
 	
 }
